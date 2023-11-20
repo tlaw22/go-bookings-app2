@@ -21,13 +21,8 @@ func NewTemplate(a *config.AppConfig) {
 var tc map[string]*template.Template
 
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	if app.TemplateCache == nil {
-		tc := app.TemplateCache
-		println(tc)
-	} else {
-		tc, _ = CreateTemplateCache()
-	}
-	// get template from cashe
+	tc := app.TemplateCache
+
 	t, ok := tc[tmpl]
 	if !ok {
 		log.Fatal("Could not get template")
